@@ -6,7 +6,7 @@ Implementation of a DNA sequence alignment algorithm. Time and Space Complexity:
 Strands of DNA are made up of molecules called nucleotides, of which there are four types: Adenosine (A), Thymine (T), Cytosine (C), annd Guanine (G). Our genome is made up of a long sequence of millions of these nucleotides with a variable ordering. Some parts are ordered the same, making up specific genes that all of us possess. Other areas, such as those that code for aspects such as appearance, are variable even among the same species. The further two species are in similarity and genetic structure, the greater the difference in their DNA sequence. 
 An important part of biological research/application is comparing two DNA sequences and assessing similarity. From an academic perspective, this can be used to determine the phylogeny of some unknown DNA sequence, or the relationship between two known species' DNA. It can also be used to show how a certain DNA sequence mutated (insertion, deletion, etc) to form a new one, and where the most likely changes occured along the chain. Assuming two sequences of size N and M (where size is measured in number of nucleotides), the time complexity of a comprehensive algorithm that checks every possible combination is O(NM). With three or more sequences, the problem would be NP-Complete. The Needleman-Wunsch algorithm utilizes dynamic programming to compare two DNA sequences and line them up based on matching nucleotides.
 
-### How It Works
+## How It Works
 The DNA strands of interest (for now, we'll work with just two) are lined up along the row and column of a matrix, leaving an empty space at the first cell of each, as follows:
 
 (Using sample sequences ATTCCG and ATCG)
@@ -108,78 +108,42 @@ The next step is to traceback through the matrix, starting at the bottom rightmo
 If we move diagonally, write both nucleotides. If we move down, there's a gap in the first (row) sequence. If we move right, there's a gap in the second (column) sequence. Applying this to the matrix above, we get the following alignment:
 
 ATTCCG
-ATC-G-
+AT-C-G
+
+As we see, all possible matching nucleotides were aligned, as optimial as possible with respect to the scoring system. With longer and more complex chains (with multiple matchings), general optimality will be determined by the scoring system (perhaps a match is given more weight than a mismatch or indel).
+
+Given the very general nature of the algorithm (this code itself), it can be run on any seqeuence of text, including RNA, protien chains, or something else entirely. It'll be up to the user to infer the output based on their parameters, but the general principle remains the same. However, scoring systems accounting for DNA base pairs, which abide by basic chemical laws, will be designed much differently than amino acid chains or plain text.
 
 
+## Running the Code
 
-### Installing
+The code is written in Perl 5, one of the preferred languages for bioinformatics-related programming.
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Download NWA.pl along with test1.txt and test2.txt (you can also create these files on your own).
 
 ```
-until finished
+c/user$ ls
+NWA.pl
+test1.txt
+test2.txt
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Populate test1 and test2 with the first and second DNA sequence (respectively) you want to compare. Include only the DNA sequence of nucleotides.
 
 ```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+Here's a databse that allows you to search based on organism/gene: https://www.ncbi.nlm.nih.gov/genbank/ Search for a sequence, select the result, and click "FASTA" below the name. Copy this sequence (without label) into the test files.
 
 ```
-Give an example
-```
 
-## Deployment
+In the cwd, run "perl NWA.pl test1.txt test2.txt". When the run is complete, the program will print the original sequence, the scoring matrix, the traceback matrix, and the alignment along with final score (positive usually means good).
+ (In the traceback matrix, each letter in the cell tells you where the arrow is point from that cell. 'l' means left, 't' means top, and 'd' means diagonal.
 
-Add additional notes about how to deploy this on a live system
+## Benchmarks
 
-## Built With
+As mentioned, the time and space complexity of this algorithm is O(NM). To give estimated times on how long the program will take for different sized genomes, I ran tests with differently-sized sequences. The results are as follows.
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Paper: Needleman, Saul B. & Wunsch, Christian D. (1970). "A general method applicable to the search for similarities in the amino acid sequence of two proteins". Journal of Molecular Biology. 48 (3): 443–53. doi:10.1016/0022-2836(70)90057-4. PMID 5420325
