@@ -107,7 +107,7 @@ The next step is to traceback through the matrix, starting at the bottom rightmo
 
 If we move diagonally, write both nucleotides. If we move down, there's a gap in the first (row) sequence. If we move right, there's a gap in the second (column) sequence. Applying this to the matrix above, we get the following alignment:
 
-ATTCCG
+ATTCCG <br />
 AT-C-G
 
 As we see, all possible matching nucleotides were aligned, as optimial as possible with respect to the scoring system. With longer and more complex chains (with multiple matchings), general optimality will be determined by the scoring system (perhaps a match is given more weight than a mismatch or indel).
