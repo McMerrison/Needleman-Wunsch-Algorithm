@@ -130,10 +130,8 @@ test2.txt
 
 Populate test1 and test2 with the first and second DNA sequence (respectively) you want to compare. Include only the DNA sequence of nucleotides.
 
-```
 Here's a databse that allows you to search based on organism/gene: https://www.ncbi.nlm.nih.gov/genbank/ Search for a sequence, select the result, and click "FASTA" below the name. Copy this sequence (without label) into the test files.
 
-```
 
 In the cwd, run "perl NWA.pl test1.txt test2.txt". When the run is complete, the program will print the original sequence, the scoring matrix, the traceback matrix, and the alignment along with final score (positive usually means good).
  (In the traceback matrix, each letter in the cell tells you where the arrow is point from that cell. 'l' means left, 't' means top, and 'd' means diagonal.
