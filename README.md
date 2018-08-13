@@ -195,9 +195,23 @@ As mentioned, the time and space complexity of this algorithm is O(NM). To give 
 | Prevotella/Geomicrobium (whole genome) | ~50,000 | ~50,000 |  |
 | Arthroderma gypseum/Candida albican (whole genome) | ~1m | ~1m |  |
 
-# Other Methods
+## Other Methods
 
+Various other alignment algorithms exist based on the nature of the comparison (interspecies vs. ancestor), the number of sequences, the length of sequences, and various other parameters. Most are a variation or improvement on the dynamic programming approach employed by the Needleman-Wunsch Algorithm.
 
+### Global vs. Local
+
+THE NW algorithm is meant for global alignment, meaning we wish to align every possible nucleotide in the entire sequence. This is useful when comparing similar species or the same gene from different species. Local Alignment is simply a variation that only seeks to find regions of similarities when comparing sequences. This is useful for finding shared genes when scanning entire genomes. The method is called the Smith-Waterman Algorithm. It is essentially the same as NW, except during the traceback step we start at the highest score value on the matrix, rather than always at the bottom rightmost cell.
+
+### Pairwise Alignment
+
+The simplest approach to pairwise alignment (global or local alignment of 2 sequences) is a dot-matrix, in which we design a matrix similar to the NW algorithm, except rather than populate cells with scores, we simply mark those that intersect at matching nucleotides along the top row and left column. The clarity of a diagonal marking indicates how closely related the sequences are, though there is a significant amount of wasted space, and lack of quantitative data. The scoring scheme emplyed by NW is an improvement on this rough method.
+
+Faster word-related methods employ a heuristic that isn't guaranteed to be correct, but performs better than NW. They are often used in official gene databses like FASTA and BLAST (where every user search is essentially an pairwise alignment with multiple possible results). 
+
+### Multiple Sequence Alignment
+
+As we've discuseed, multiple sequence alignment is an NP-Complete problem. Traditional algorithms used for pairwise alignment can be run on multiple sequences, but the problem size and runtime will grow exponentially.
 
 ## Acknowledgments
 
