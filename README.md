@@ -156,6 +156,9 @@ As mentioned, the time and space complexity of this algorithm is O(NM). To give 
 | Prevotella/Geomicrobium (whole genome) | ~50,000 | ~50,000 |  |
 | Arthroderma gypseum/Candida albican (whole genome) | ~1m | ~1m |  |
 
+# Other Methods
+
+
 
 ## Acknowledgments
 
