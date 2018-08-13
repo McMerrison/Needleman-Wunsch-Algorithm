@@ -145,7 +145,10 @@ In the cwd, run "perl NWA.pl test1.txt test2.txt". When the run is complete, the
 
 As mentioned, the time and space complexity of this algorithm is O(NM). To give estimated times on how long the program will take for different sized genomes, I ran tests with differently-sized sequences. The results are as follows.
 
-
+| Sequence 1/Sequence 2 (gene) | Length 1 | Length 2 | Runtime (s)
+| Human/Drosophila (beta-tubulin) | ~2500 | ~1,800 | 6 |
+| Prevotella/Geomicrobium (whole genome) | ~50,000 | ~50,000 |  |
+| Arthroderma gypseum/Candida albican (whole genome) | ~1m | ~1m |  |
 
 ## Acknowledgments
 
