@@ -146,9 +146,9 @@ Here's a databse that allows you to search based on organism/gene: https://www.n
 In the cwd, run: 
 
 ```
-$ perl NWA.pl test1.txt test2.txt
+$ perl NWA.pl test1.txt test2.txt 
 ```
-
+(Note: another option is to directly populate [arg1] and [arg2] with your own text file names).
 Here is the output when run on the simple example alignment we just ran through.
 ```
 Dynamic Programming Matrix:
