@@ -119,7 +119,7 @@ As we see, all possible matching nucleotides were aligned, as optimial as possib
 
 Given the very general nature of the algorithm (this code itself), it can be run on any seqeuence of text, including RNA, protien chains, or something else entirely. It'll be up to the user to infer the output based on their parameters, but the general principle remains the same. However, scoring systems accounting for DNA base pairs, which abide by basic chemical laws, will be designed much differently than amino acid chains or plain text.
 
-Example RNA: AUGCGACCUACGAU
+Example RNA: AUGCGACCUACGAU <br />
 Example Protein: KTVVILTNDYPQYKGMFMDINSLGDFPLVEKVHGTEAGE
 
 To test RNA sequences (similar to DNA, except Thymine is replaced with Uracil, U instead of T), examine and try using the exRNA text files as the two input sequences. To test protein sequences (made up of various amino acids each signified by a letter, rather than the 4 nucleotides), use the exProtein text files.
