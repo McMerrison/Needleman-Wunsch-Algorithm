@@ -143,8 +143,34 @@ Populate test1 and test2 with the first and second DNA sequence (respectively) y
 Here's a databse that allows you to search based on organism/gene: https://www.ncbi.nlm.nih.gov/genbank/ Search for a sequence, select the result, and click "FASTA" below the name. Copy this sequence (without label) into the test files.
 
 
-In the cwd, run "perl NWA.pl test1.txt test2.txt". 
+In the cwd, run: 
 
+```
+$ perl NWA.pl test1.txt test2.txt
+```
+
+Here is the output when run on the simple example alignment we just ran through.
+```
+Dynamic Programming Matrix:
+0   -1   -2   -3   -4   -5   -6
+-1   1   0   -1   -2   -3   -4
+-2   0   2   1   0   -1   -2
+-3   -1   1   1   2   1   0
+-4   -2   0   0   1   1   2
+Dynamic Programming Matrix:
+-   -   -   -   -   -   -
+-   d   l   l   l   l   l
+-   t   d   l   l   l   l
+-   t   t   d   d   l   l
+-   t   t   t   t   d   d
+Alignment:
+
+ATTCCG
+AT-C-G
+
+```
+
+And here is an alignment for the beta-tubulin gene in homo sapiens (humans) and drosophila melanogaster (fruit flies). Though there are differences, the core DNA remains largely the same. 
 ```
 Alignment:
 
@@ -157,7 +183,7 @@ Runtime: 6 seconds
 ```
 
 When the run is complete, the program will print the original sequence, the scoring matrix (for shorter sequences), the traceback matrix (for shorter sequences), and the alignment along with final score (positive usually means good).
- (In the traceback matrix, each letter in the cell tells you where the arrow is point from that cell. 'l' means left, 't' means top, and 'd' means diagonal. Above, you'll see a comparison in DNA code for the beta-tubulin gene in homo sapiens (humans) and drosophila melanogaster (fruit flies). Though there are differences, the core code remains largely the same.
+ (In the traceback matrix, each letter in the cell tells you where the arrow is point from that cell. 'l' means left, 't' means top, and 'd' means diagonal).
 
 ## Benchmarks
 
