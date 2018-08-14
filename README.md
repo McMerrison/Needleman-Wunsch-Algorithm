@@ -211,7 +211,7 @@ Faster word-related methods employ a heuristic that isn't guaranteed to be corre
 
 ### Multiple Sequence Alignment
 
-As we've discuseed, multiple sequence alignment is an NP-Complete problem. Traditional algorithms used for pairwise alignment can be run on multiple sequences, but the problem size and runtime will grow exponentially.
+As we've discuseed, multiple sequence alignment is an NP-Complete problem. Traditional algorithms used for pairwise alignment can be run on multiple sequences, but the problem size and runtime will grow exponentially. When given multiple sequences, an alternative is to just perform a series of pairwise alignments, arranging sequences by the alignment score (since the same scoring scheme is used on all alignments, the actual numbers are arbitrary and relative). They are clustered and sorted by sequences that are most closely related, and constructed into a phylogentic tree ('phylogeny' refers to evolutionary family). Heuristic methods such as Hidden Markov Models, simulated annealing and genetic algorithms (interestingly enough, based on the very principle of chromosomal mutation, applied to a wide variety of computational problems) have also been applied.
 
 ## Acknowledgments
 
