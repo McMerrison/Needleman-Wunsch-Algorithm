@@ -207,12 +207,29 @@ THE NW algorithm is meant for global alignment, meaning we wish to align every p
 
 The simplest approach to pairwise alignment (global or local alignment of 2 sequences) is a dot-matrix, in which we design a matrix similar to the NW algorithm, except rather than populate cells with scores, we simply mark those that intersect at matching nucleotides along the top row and left column. The clarity of a diagonal marking indicates how closely related the sequences are, though there is a significant amount of wasted space, and lack of quantitative data. The scoring scheme emplyed by NW is an improvement on this rough method.
 
-Faster word-related methods employ a heuristic that isn't guaranteed to be correct, but performs better than NW. They are often used in official gene databses like FASTA and BLAST (where every user search is essentially an pairwise alignment with multiple possible results). 
+Faster word-related methods employ a heuristic that isn't guaranteed to be correct, but performs better than NW. They are often used in official gene databses like FASTA and BLAST (where every user search is essentially an pairwise alignment with multiple possible results). For each query, subsequences are identified and matched against the databse. The character indexes are compared to get an offset, and candidate matches to the full sequence. By matching small subsequences first, we can eliminate a vast majority of candidate sequences int he data base that do not contain the word (and by extension, cannot contain the query).
 
 ### Multiple Sequence Alignment
 
-As we've discuseed, multiple sequence alignment is an NP-Complete problem. Traditional algorithms used for pairwise alignment can be run on multiple sequences, but the problem size and runtime will grow exponentially. When given multiple sequences, an alternative is to just perform a series of pairwise alignments, arranging sequences by the alignment score (since the same scoring scheme is used on all alignments, the actual numbers are arbitrary and relative). They are clustered and sorted by sequences that are most closely related, and constructed into a phylogentic tree ('phylogeny' refers to evolutionary family). Heuristic methods such as Hidden Markov Models, simulated annealing and genetic algorithms (interestingly enough, based on the very principle of chromosomal mutation, applied to a wide variety of computational problems) have also been applied.
+As mentioned, multiple sequence alignment is an NP-Complete problem. Traditional algorithms used for pairwise alignment can be run on multiple sequences, but the problem size and runtime will grow exponentially. Heuristic methods such as Hidden Markov Models, simulated annealing and genetic algorithms (interestingly enough, based on the very principle of chromosomal mutation, applied to a wide variety of computational problems) have also been applied. Because these more computationally efficient methods aren't always accurate, comparisons between 3 or 4 sequences are often done through traditioanl dynamic programming, since modern hardware can still perform the alignment in a reasonable amount of time, well worth an accurate alignment.
+
+#### T-Coffee
+
+Tree-based Consistency Objective Function for Alignment Evaluation is software that performs MSA through a series of pairwise alignments (dynamic programming), arranging sequences by the alignment score (since the same scoring scheme is used on all alignments, the actual numbers are arbitrary and relative). They are clustered and sorted by sequences that are most closely related, followed by less closely-related, and constructed into a phylogentic tree ('phylogeny' refers to evolutionary family). The time complexity is essentially O(mn^2), where n^2 refers to the pairwise alignment and m refers to the number of sequences. While not ideal, it is still polynomial and produces and accurate alignment, adaptable to numerous databases and software.
+
+#### Iterative Methods
+
+The main drawback of tree methods (such as T-Coffee) is the dependence on an accurate initial  alignment. The entire tree structure depends on a good initial matching to form the cluster of related species, which is then used as a relative baseline for the rest of the tree. As an alternative, iterative methods use an objective function, optimized using a scoring scheme. It starts with an initial global alignment, then realigns subsequences, which then form the basis for the next alignment.
+
+#### Profile Analysis
+
+
+
 
 ## Acknowledgments
 
 Paper: Needleman, Saul B. & Wunsch, Christian D. (1970). "A general method applicable to the search for similarities in the amino acid sequence of two proteins". Journal of Molecular Biology. 48 (3): 443–53. doi:10.1016/0022-2836(70)90057-4. PMID 5420325
+
+Databse: https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastSearch
+
+Paper: Notredame C, Higgins DG, Heringa J (2000-09-08). "T-Coffee: A novel method for fast and accurate multiple sequence alignment". J Mol Biol. 302 (1): 205–217. doi:10.1006/jmbi.2000.4042. PMID 10964570.
