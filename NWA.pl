@@ -182,10 +182,24 @@ $sub = $ARGV[1];
 &readseq;
 $len1 = length($seq1)+1;
 $len2 = length($seq2)+1;
+
+#Only print matrices with small-sized sequences
+if ($len1 > 10 || $len2 > 10) {
+	$DPflag = 0;
+}
+
+
 @seq1m = $seq1 =~ /./g;
 @seq2m = $seq2 =~ /./g;
-print "\nKey: \n$seq1\n\n";
-print "Subject: \n$seq2\n\n";
+
+if ($len1 < 3000 || $len2 < 3000) {
+	print "\nKey: \n$seq1\n\n";
+	print "Subject: \n$seq2\n\n";
+}
+
+
+#Runtime
+my $start_time = time();
 
 #Build the matrix
 &construct_matrix;
@@ -193,18 +207,24 @@ print "Subject: \n$seq2\n\n";
 #Backtrack
 &track;
 
+my $end_time = time();
+my $run_time = $end_time - $start_time;
+
 #Calcualte score as "per char" relative to key
 $score = int $score/$len1;
 
-#Print matrices if flag is set
+#Print only if flag is set
 if ($DPflag == 1) {
 	&printmatrix(\@DPmatrix);
 	&printmatrix(\@DPmatrixL);
 }
-#Show alignment and score
-print "Alignment: \n\n";
-print "$alignment1\n";
-print "$alignment2\n\n";
+#Show alignment and score if sequence is reasonably long
+if ($len1 < 3000 || $len2 < 3000) {
+	print "Alignment: \n\n";
+	print "$alignment1\n";
+	print "$alignment2\n\n";
+}
 print "Score: ";
 print "$score\n";
+print "Runtime: $run_time seconds\n";
 
