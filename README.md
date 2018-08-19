@@ -223,7 +223,11 @@ The main drawback of tree methods (such as T-Coffee) is the dependence on an acc
 
 #### Profile Analysis
 
+A conserved DNA (or RNA or protein) sequence is considered similar across multiple species or genomes. It means that the sequence is beneficial in some way, and is therefore sustained by natural selection. Profile analysis, or motif finding, seeks out these shared regions with a basic global alignment of multiple sequences and generates a profile matrix. The freqeuncy counts of each nucleotide or amino acid come from the region's distribution as opposed to a simple count. Regions with similar profile matrices can then be compared to create a phylogentic tree based on this counted heuristic.
 
+#### Consensus Methods
+
+In general machine learning, the bagging method involves training a classifier trained with multiple models to give an aggregate function deemed more accurate than any individual method or heuristic. Similarly, consensus methods in MSA combine multiple approximation algorithms to create different alignments, each of wihch is then compared to give a final, consensus alignment.
 
 
 ## Acknowledgments
