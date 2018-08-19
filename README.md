@@ -193,7 +193,7 @@ As mentioned, the time and space complexity of this algorithm is O(NM). To give 
 | - | - | - | - |
 | Human/Drosophila (beta-tubulin) | ~2500 | ~1,800 | 6 seconds |
 | Prevotella/Geomicrobium (whole genome) | ~50,000 | ~50,000 | 54 minutes |
-| Arthroderma gypseum/Candida albican (whole genome) | ~1m | ~1m | At least 6 hours |
+| Arthroderma gypseum/Candida albican (whole genome) | ~1m | ~1m | At least 14 hours |
 
 ## Other Methods
 
