@@ -189,11 +189,11 @@ When the run is complete, the program will print the original sequence, the scor
 
 As mentioned, the time and space complexity of this algorithm is O(NM). To give estimated times on how long the program will take for different sized genomes, I ran tests with differently-sized sequences. The results are as follows.
 
-| Sequence 1/Sequence 2 (gene) | Length 1 | Length 2 | Runtime (s)
+| Sequence 1/Sequence 2 (gene) | Length 1 | Length 2 | Runtime
 | - | - | - | - |
-| Human/Drosophila (beta-tubulin) | ~2500 | ~1,800 | 6 |
-| Prevotella/Geomicrobium (whole genome) | ~50,000 | ~50,000 |  |
-| Arthroderma gypseum/Candida albican (whole genome) | ~1m | ~1m |  |
+| Human/Drosophila (beta-tubulin) | ~2500 | ~1,800 | 6 seconds |
+| Prevotella/Geomicrobium (whole genome) | ~50,000 | ~50,000 | 54 minutes |
+| Arthroderma gypseum/Candida albican (whole genome) | ~1m | ~1m | At least 6 hours |
 
 ## Other Methods
 
